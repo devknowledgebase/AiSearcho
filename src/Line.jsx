@@ -1,0 +1,9 @@
+import React from 'react'
+
+export default function Line() {
+  return (
+   <svg style={{ marginLeft: '20px' }} width="267" height="1" viewBox="0 0 267 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line y1="0.5" x2="267" y2="0.5" stroke="#282729"/>
+</svg>
+  )
+}

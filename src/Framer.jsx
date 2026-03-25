@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import Hero from './component/Hero.jsx'
 import "./Framer.css"
 import "./index.css"
@@ -17,65 +18,20 @@ import visual from "./Visual.png"
 import dashboard2 from "./dashboard2.png"
 import dashboard3 from "./dashboard3.png"
 import visual2 from "./Visual2.png"
-import bell from "./bell-ringing 1.svg"
-import chartline from "./chart-line 1.svg"
-import cursor from "./cursor-click 1.svg"
-import files from "./files 1.svg"
-import gauge from "./gauge 1.svg"
-import list from "./list-checks 1.svg"
-import magic from "./magic-wand 1.svg"
-import sparkle from "./sparkle 1.svg"
-import target from "./target 2.svg"
+import Testimonial from './ui/testimonial-v2.jsx'
+import { GlowingEffectDemo } from './component/GlowingEffectDemo.jsx'
+import check from "./Icons.svg"
+import Line from "./Line.jsx"
+import pattern from "./pattern 1.svg"
+import pattern2 from "./pattern 2.svg"
+import Footer from './component/Footer.jsx'
+import { useNavigate } from "react-router-dom"
+import Dashboard from "./Dashboard.jsx"
 
 const boxs = [box, box1, box2, box3, box4, box5, box6, box7]
-const features = [
-  {
-    logo: gauge,
-    title: "User-friendly dashboard",
-    body: "Perform complex SEO audits and optimizations with a single click."
-  },
-  {
-    logo: chartline,
-    title: "Visual reports",
-    body: "Visual insights into your site’s performance."
-  },
-  {
-    logo: sparkle,
-    title: "Smart Keyword Generator",
-    body: "Automatic suggestions and the best keywords to target."
-  },
-   {
-    logo: list,
-    title: "Content evaluation",
-    body: "Simple corrections for immediate improvemens."
-  },
-  {
-    logo: target,
-    title: "SEO goal setting",
-    body: "Helps you set and achieve SEO goals with guided assistance."
-  },
-  {
-    logo: bell,
-    title: "Automated alerts",
-    body: "Automatic notifications about your SEO health, including quick fixes."
-  },
-   {
-    logo: magic,
-    title: "Link Optimization Wizard",
-    body: "Guides you through the process of creating and managing links."
-  },
-  {
-    logo: cursor,
-    title: "One-click optimization",
-    body: "Perform complex SEO audits and optimizations with a single click."
-  },
-  {
-    logo: files,
-    title: "Competitor reports",
-    body: "Provides insights into competitors’ keyword strategies and ranking."
-  }
-];
+
 export default function Framer() {
+  const navigate = useNavigate()
   return (
     <>
     <div className="page">
@@ -85,7 +41,7 @@ export default function Framer() {
      <div className='hero-text'>
       <h1>Boost your rankings with AI.</h1>
       <p>Elevate your site’s visibility effortlessly with AI, where smart technology meets user-friendly SEO tools.</p>
-      <button>Start for free</button>
+      <button onClick={() => navigate("/Dashboard")}>Start for free</button>
      </div>
     </div> 
      <div className='hero-img'>
@@ -102,7 +58,7 @@ export default function Framer() {
     <div className='page2'>
       <div className='companies'>
         <div className='p1'>Trusted by the world’s most innovative teams</div>
-        <div className='grid'>
+        <div className='bento-grid-custom'>
           {boxs.map((box, index) => (
             <img src={box} alt="box" key={index} />
           ))}
@@ -121,7 +77,7 @@ export default function Framer() {
           </div>
         </div>
         <div className='user-friendly'>
-          <img src={dashboard2} alt="dashboard2" />
+          <img src={dashboard} alt="dashboard2" />
           <div className='user-friendly-grad'></div>
           <div className='uf-text'>
             <h5>User-friendly dashboard</h5>
@@ -151,19 +107,142 @@ export default function Framer() {
     <div className='page3'>
       <div className='features'>
       <h2>Elevate your SEO efforts.</h2>
-      <div className="features-container">
-  {features.map((feature, index) => (
-    <div className="feature-card" key={index}>
-      <div className="feature-card-group">
-      <img src={feature.logo} alt={feature.title} />
-      <h5>{feature.title}</h5>
-      </div>
-      <p>{feature.body}</p>
-    </div>
-  ))}
-</div>
+      <GlowingEffectDemo/>
       </div>
     </div>
+  <div className='page4'>
+    <Testimonial/>
+  </div>
+  <div className='page5'>
+    <div className='pricing'>
+      <div className='pricing-header'>
+      <h2>Pricing</h2>
+      <p>Choose the right plan to meet your SEO needs and start optimizing today.</p>
+      </div>
+      <div className='pricing-card-container'>
+        <div className='pricing-card'>
+         <div className='pricing-card-under-container'>
+          <div className='pricing-card-header'>
+          <h4>Basic</h4>
+          <div className='pricing-card-p'>$29/mo</div>
+          </div>
+          <Line/>
+          <div className='pricing-card-body'>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Keyword optimization</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Automated meta tags</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>SEO monitoring</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Monthly reports</div>
+            </div>
+          </div>
+         </div>
+         <button className='pricing-card-button'>Join waitlist</button>  
+        </div>
+        <div className='pricing-card2'>
+        <div className='pricing-card-under-container'>
+          <div className='pricing-card-header'>
+          <h4>Pro</h4>
+          <div className='pricing-card-p'>$79/mo</div>
+          </div>
+          <Line/>
+          <div className='pricing-card-body'>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Keyword optimization</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Automated meta tags</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>SEO monitoring</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Monthly reports</div>
+            </div>
+                   <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Content suggestions</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Link optimization</div>
+            </div>
+          </div>
+         </div>
+         <button className='pricing-card-button3'>Join waitlist</button>  
+        </div>
+        <div className='pricing-card'>
+         <div className='pricing-card-under-container'>
+          <div className='pricing-card-header'>
+          <h4>Business</h4>
+          <div className='pricing-card-p'>$149/mo</div>
+          </div>
+          <Line/>
+          <div className='pricing-card-body'>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Keyword optimization</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Automated meta tags</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>SEO monitoring</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Monthly reports</div>
+            </div>
+                   <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>Content suggestions</div>
+            </div>
+            <div className='pricing-card-body-text'>
+              <img src={check} alt="check"/>
+              <div className='pricing-card-body-text-p'>API integration</div>
+            </div>
+          </div>
+         </div>
+         <button className='pricing-card-button2'>Join waitlist</button>  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className='page6'>
+    <div className='CTA'>
+      <div className='CTA-under-container'>
+      <h2 className='CTA-h2'>AI-driven SEO for everyone.</h2>
+      <form>
+      <div className='CTA-form'>
+        <input type="text" placeholder='Enter your email'/>
+        <button className='CTA-button1' >Join waitlist</button>
+      </div>
+       <button className='CTA-button2'>Join waitlist</button>
+      </form>
+      <p className='CTA-p'>No credit card required, 7-days free trial</p>
+      </div>
+      <img src={pattern2} alt="pattern2" className='CTA-pattern2'/>
+      <div className='CTA-circle'></div>
+    </div>
+  </div>
+  <div className='page7'>
+    <Footer/>
+  </div>
     </>
   )
 }

@@ -32,7 +32,10 @@
     padding: 0 40px;
     gap: 180px;
 }
-
+.nav-container img{
+    width: 38px;
+    height: 38px;
+}
 /* .nav-content removed for centering */
 
 .nav-actions {
@@ -99,27 +102,115 @@
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     padding: 6px 15px;
-    background: #8C45FF;
-    max-width: 109px;
+    background: #8C45FF;            
+    max-width: 110px;
     cursor: pointer;
 }
 
 .nav-btn-item {
     color: #ffffff;
+    font-family: "Inter";
     font-size: 14px;
     font-weight: 400;
 }
+
+/* Dropdown Menu Item Polish (Global Targeting) */
+body [data-slot="dropdown-menu-item"] {
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+body [data-slot="dropdown-menu-item"][data-highlighted],
+body [data-slot="dropdown-menu-item"]:focus,
+body [data-slot="dropdown-menu-item"]:hover {
+    background-color: rgba(255, 255, 255, 1) !important;
+    color: white !important;
+    outline: none !important;
+    cursor: pointer !important;
+}
+
+body [data-slot="dropdown-menu-item"][data-variant="destructive"][data-highlighted],
+body [data-slot="dropdown-menu-item"][data-variant="destructive"]:focus,
+body [data-slot="dropdown-menu-item"][data-variant="destructive"]:hover {
+    background-color: rgba(248, 113, 113, 0.1) !important;
+    color: #f87171 !important;
+}
+
+.user-avatar-static {
+    transition: transform 0.2s ease, filter 0.2s ease;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar-static:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+/* Hamburger icon */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
 
 /* Mobile Styles */
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
+        background: transparent;
+        border: none;
+        padding: 0;
+        position: relative;
+        z-index: 1000;
+    }
+
+    .navbar {
+        width: 92%;
     }
 
     .nav-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 0 20px;
+        gap: 0;
+    }
+
+    /* Show auth actions on mobile next to hamburger */
+    .nav-actions {
+        display: flex;
+        gap: 12px;
+        order: 2;
+    }
+
+    .nav-btn {
+        display: flex;
+        padding: 5px 12px;
+        max-width: fit-content;
     }
 
     .nav-links {
@@ -128,28 +219,36 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--bg-primary);
+        background: rgba(5, 2, 8, 0.97);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 48px;
-        z-index: -1;
-        display: none;
-        opacity: 0;
+        z-index: 999;
         padding: 0 32px;
-        border-radius: 20px;
-        justify-self: auto;
+        border-radius: 0;
+        
+        /* Slide in from right */
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);
+        opacity: 1;
     }
 
     .nav-links a {
         font-size: 1.75rem;
         font-weight: 600;
         letter-spacing: -0.02em;
+        color: rgba(255, 255, 255, 0.85);
         position: relative;
-        opacity: 0;
-        will-change: transform, opacity, filter;
+        cursor: pointer;
     }
 
     .nav-links a::after {
@@ -159,7 +258,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        background: linear-gradient(90deg, #8C45FF, #b372cf);
         transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 

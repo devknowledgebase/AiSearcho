@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { ClerkProvider } from "@clerk/react";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ClerkProvider 
+      afterSignOutUrl="/" 
+      fallbackRedirectUrl="/Dashboard"
+      signInFallbackRedirectUrl="/Dashboard"
+      signUpFallbackRedirectUrl="/Dashboard"
+    >
+      <App />
+    </ClerkProvider>
   </React.StrictMode>
 );
 
