@@ -48,20 +48,21 @@ export function AiChatPage() {
         headers: {
           "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://ai-searcho.vercel.app", // Optional, for OpenRouter analytics
-          "X-Title": "AISearcho" // Optional, for OpenRouter analytics
+          "HTTP-Referer": "https://ai-searcho.vercel.app",
+          "X-Title": "AISearcho"
         },
         body: JSON.stringify({
-          model: "google/gemini-2.0-flash-lite-preview-02-05:free",
+          model: "nvidia/nemotron-3-super-120b-a12b:free",
           messages: apiMessages,
-          include_reasoning: true 
+          reasoning: { enabled: true }
         })
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("API HTTP Error:", response.status, errorText);
-        throw new Error(`Server returned status ${response.status}: ${errorText}`);
+        const errorData = await response.json().catch(() => ({}));
+        console.error("API HTTP Error:", response.status, errorData);
+        const errorMessage = errorData.error?.message || `Status ${response.status}`;
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
@@ -80,7 +81,10 @@ export function AiChatPage() {
       }
     } catch (error) {
       console.error("Fetch Error:", error);
-      setMessages(prev => [...prev, { role: "assistant", content: "Sorry, I couldn't reach the server right now." }]);
+      setMessages(prev => [...prev, { 
+        role: "assistant", 
+        content: `Sorry, I encountered an error: ${error.message}. Please try again later or check your API key.` 
+      }]);
     } finally {
       setIsTyping(false);
     }
