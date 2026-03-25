@@ -41,7 +41,7 @@ export default function Framer() {
      <div className='hero-text'>
       <h1>Boost your rankings with AI.</h1>
       <p>Elevate your site’s visibility effortlessly with AI, where smart technology meets user-friendly SEO tools.</p>
-      <button onClick={() => navigate("/Dashboard")}>Start for free</button>
+      <button>Start for free</button>
      </div>
     </div> 
      <div className='hero-img'>
