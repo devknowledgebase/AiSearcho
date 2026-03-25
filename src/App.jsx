@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter basename="/AiSearcho/">
+    <BrowserRouter basename="/">
       <UserSync />
       <div className="main">
         <Routes>
