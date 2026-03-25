@@ -47,23 +47,32 @@ export function AiChatPage() {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "HTTP-Referer": "https://ai-searcho.vercel.app", // Optional, for OpenRouter analytics
+          "X-Title": "AISearcho" // Optional, for OpenRouter analytics
         },
         body: JSON.stringify({
-          model: "nvidia/nemotron-3-super-120b-a12b:free",
+          model: "google/gemini-2.0-flash-lite-preview-02-05:free",
           messages: apiMessages,
-          reasoning: { enabled: true }
+          include_reasoning: true 
         })
       });
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("API HTTP Error:", response.status, errorText);
+        throw new Error(`Server returned status ${response.status}: ${errorText}`);
+      }
+
       const result = await response.json();
+      console.log("API Success Response:", result);
       
       if (result.choices && result.choices.length > 0) {
         const assistantMessage = result.choices[0].message;
         setMessages(prev => [...prev, {
           role: "assistant",
           content: assistantMessage.content,
-          reasoning_details: assistantMessage.reasoning_details
+          reasoning_details: assistantMessage.reasoning || assistantMessage.reasoning_details
         }]);
       } else {
         console.error("API Error:", result);
