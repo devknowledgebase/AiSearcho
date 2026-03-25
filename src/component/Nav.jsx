@@ -103,7 +103,7 @@ export default function Nav() {
         <div className="nav-actions">
           <div className="nav-auth">
             <Show when="signed-out">
-              <SignInButton mode="modal" forceRedirectUrl="/Dashboard" fallbackRedirectUrl="/Dashboard">
+              <SignInButton mode="modal" forceRedirectUrl="/dashboard" fallbackRedirectUrl="/dashboard">
                 <div className='nav-btn' onClick={() => setMenuOpen(false)}>
                   <div className='nav-btn-item'>Sign in</div>
                 </div>

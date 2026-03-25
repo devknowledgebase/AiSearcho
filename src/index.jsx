@@ -11,9 +11,9 @@ root.render(
   <React.StrictMode>
     <ClerkProvider 
       afterSignOutUrl="/" 
-      fallbackRedirectUrl="/Dashboard"
-      signInFallbackRedirectUrl="/Dashboard"
-      signUpFallbackRedirectUrl="/Dashboard"
+      fallbackRedirectUrl="/dashboard"
+      signInFallbackRedirectUrl="/dashboard"
+      signUpFallbackRedirectUrl="/dashboard"
     >
       <App />
     </ClerkProvider>
