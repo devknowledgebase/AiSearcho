@@ -37,6 +37,11 @@ export function AiChatPage() {
     setIsTyping(true);
 
     try {
+      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+      if (!apiKey) {
+        throw new Error("VITE_OPENROUTER_API_KEY is missing. If you are on Vercel, please add it to your Environment Variables.");
+      }
+
       const apiMessages = currentMessages.map(msg => ({
         role: msg.role,
         content: msg.content,
