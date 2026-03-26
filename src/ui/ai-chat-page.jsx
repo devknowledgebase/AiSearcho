@@ -29,71 +29,77 @@ export function AiChatPage() {
     }
   }, [messages, isTyping])
 
-  const handleSend = async (content, attachment) => {
-    const newMessage = { role: "user", content, attachment };
-    const currentMessages = [...messages, newMessage];
-    
-    setMessages(currentMessages);
-    setIsTyping(true);
+const handleSend = async (content, attachment) => {
+  const newMessage = { role: "user", content, attachment };
+  const currentMessages = [...messages, newMessage];
 
-    try {
-      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
-      if (!apiKey) {
-        throw new Error("VITE_OPENROUTER_API_KEY is missing. If you are on Vercel, please add it to your Environment Variables.");
-      }
+  setMessages(currentMessages);
+  setIsTyping(true);
 
-      const apiMessages = currentMessages.map(msg => ({
-        role: msg.role,
-        content: msg.content,
-        ...(msg.reasoning_details && { reasoning_details: msg.reasoning_details })
-      }));
-
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${import.meta.env.VITE_OPENROUTER_API_KEY}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://ai-searcho.vercel.app",
-          "X-Title": "AISearcho"
-        },
-        body: JSON.stringify({
-          model: "nvidia/nemotron-3-super-120b-a12b:free",
-          messages: apiMessages,
-          reasoning: { enabled: true }
-        })
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("API HTTP Error:", response.status, errorData);
-        const errorMessage = errorData.error?.message || `Status ${response.status}`;
-        throw new Error(errorMessage);
-      }
-
-      const result = await response.json();
-      console.log("API Success Response:", result);
-      
-      if (result.choices && result.choices.length > 0) {
-        const assistantMessage = result.choices[0].message;
-        setMessages(prev => [...prev, {
-          role: "assistant",
-          content: assistantMessage.content,
-          reasoning_details: assistantMessage.reasoning || assistantMessage.reasoning_details
-        }]);
-      } else {
-        console.error("API Error:", result);
-        setMessages(prev => [...prev, { role: "assistant", content: "Sorry, I received an invalid response from the server." }]);
-      }
-    } catch (error) {
-      console.error("Fetch Error:", error);
-      setMessages(prev => [...prev, { 
-        role: "assistant", 
-        content: `Sorry, I encountered an error: ${error.message}. Please try again later or check your API key.` 
-      }]);
-    } finally {
-      setIsTyping(false);
+  try {
+    const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+    if (!apiKey) {
+      throw new Error("VITE_OPENROUTER_API_KEY is missing.");
     }
+
+    // ✅ Build clean API messages — no attachment, no UI fields, no initial greeting
+    const apiMessages = [
+      { role: "system", content: "You are AISearcho, a helpful AI assistant." },
+      ...currentMessages
+        .filter((msg, index) => {
+          if (index === 0 && msg.role === "assistant") return false;
+          if (!msg.content || String(msg.content).trim() === "") return false;
+          return true;
+        })
+        .map(msg => ({
+          role: msg.role,
+          content: typeof msg.content === "string" ? msg.content : String(msg.content),
+        }))
+    ].slice(-20); // trim to last 20 messages
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://ai-searcho.vercel.app",
+        "X-Title": "AISearcho"
+      },
+      body: JSON.stringify({
+        model: "nvidia/nemotron-3-super-120b-a12b:free",
+        messages: apiMessages,
+        reasoning: { enabled: true }
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error("API Error:", response.status, errorData);
+      throw new Error(errorData.error?.message || `Status ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (result.choices?.length > 0) {
+      const assistantMessage = result.choices[0].message;
+      setMessages(prev => [...prev, {
+        role: "assistant",
+        content: assistantMessage.content,
+        reasoning_details: assistantMessage.reasoning || assistantMessage.reasoning_details
+      }]);
+    } else {
+      throw new Error("Invalid response from server.");
+    }
+  } catch (error) {
+    console.error("Fetch Error:", error);
+    setMessages(prev => [...prev, {
+      role: "assistant",
+      content: `Sorry, I encountered an error: ${error.message}. Please try again.`
+    }]);
+  } finally {
+    setIsTyping(false);
   }
+};
 
   return (
     <div className="relative flex h-[calc(100svh-var(--header-height))] flex-col overflow-hidden bg-background">
