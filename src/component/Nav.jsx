@@ -21,7 +21,7 @@ gsap.registerPlugin(useGSAP)
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { signOut, openUserProfile } = useClerk()
+  const { signOut, openUserProfile, openSignIn } = useClerk()
   const navigate = useNavigate()
   const { user } = useUser()
   
@@ -92,7 +92,9 @@ export default function Nav() {
   return (
     <nav className="navbar" ref={containerRef}>
       <div className="container nav-container">
-        <img src={logo} alt="logo" href="#" />
+        <div onClick={() => {document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })}} style={{ cursor: 'pointer' }}>
+          <img src={logo} alt="logo" />
+        </div>
 
         {/* Nav links */}
         <div className={`nav-links${menuOpen ? ' open' : ''}`}>
@@ -106,7 +108,14 @@ export default function Nav() {
             style={{ cursor: 'pointer' }}
           >Features</a>
           <a
-            onClick={() => { setMenuOpen(false); navigate('/dashboard') }}
+            onClick={() => {
+              setMenuOpen(false)
+              if (user) {
+                navigate('/dashboard')
+              } else {
+                openSignIn({ forceRedirectUrl: '/dashboard', fallbackRedirectUrl: '/dashboard' })
+              }
+            }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ cursor: 'pointer' }}

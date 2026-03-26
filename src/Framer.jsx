@@ -34,7 +34,7 @@ export default function Framer() {
   const navigate = useNavigate()
   return (
     <>
-    <div className="page">
+    <div className="page" id="home">
       <Nav/>
       <div className='hero-container'>
      <img src={m} alt="m" id='m'/>
