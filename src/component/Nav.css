@@ -114,26 +114,8 @@
     font-weight: 400;
 }
 
-/* Dropdown Menu Item Polish (Global Targeting) */
-body [data-slot="dropdown-menu-item"] {
-    transition: background 0.15s ease, color 0.15s ease;
-}
 
-body [data-slot="dropdown-menu-item"][data-highlighted],
-body [data-slot="dropdown-menu-item"]:focus,
-body [data-slot="dropdown-menu-item"]:hover {
-    background-color: rgba(255, 255, 255, 1) !important;
-    color: white !important;
-    outline: none !important;
-    cursor: pointer !important;
-}
 
-body [data-slot="dropdown-menu-item"][data-variant="destructive"][data-highlighted],
-body [data-slot="dropdown-menu-item"][data-variant="destructive"]:focus,
-body [data-slot="dropdown-menu-item"][data-variant="destructive"]:hover {
-    background-color: rgba(248, 113, 113, 0.1) !important;
-    color: #f87171 !important;
-}
 
 .user-avatar-static {
     transition: transform 0.2s ease, filter 0.2s ease;

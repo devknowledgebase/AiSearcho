@@ -104,16 +104,16 @@ export default function Framer() {
       </div>
     </div>
     </div>
-    <div className='page3'>
+    <div className='page3' id="features">
       <div className='features'>
       <h2>Elevate your SEO efforts.</h2>
       <GlowingEffectDemo/>
       </div>
     </div>
-  <div className='page4'>
+  <div className='page4' id="testimonials">
     <Testimonial/>
   </div>
-  <div className='page5'>
+  <div className='page5' id="pricing">
     <div className='pricing'>
       <div className='pricing-header'>
       <h2>Pricing</h2>

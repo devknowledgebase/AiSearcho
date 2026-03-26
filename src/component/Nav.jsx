@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Show, SignInButton, useClerk, useUser } from "@clerk/react"
 import { 
   DropdownMenu, 
@@ -21,6 +22,7 @@ gsap.registerPlugin(useGSAP)
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const { signOut, openUserProfile } = useClerk()
+  const navigate = useNavigate()
   const { user } = useUser()
   
   // References for animation
@@ -94,10 +96,39 @@ export default function Nav() {
 
         {/* Nav links */}
         <div className={`nav-links${menuOpen ? ' open' : ''}`}>
-          <a onClick={() => setMenuOpen(false)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Features</a>
-          <a onClick={() => setMenuOpen(false)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Developers</a>
-          <a onClick={() => setMenuOpen(false)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Company</a>
-          <a onClick={() => setMenuOpen(false)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>Pricing</a>
+          <a
+            onClick={() => {
+              setMenuOpen(false)
+              document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: 'pointer' }}
+          >Features</a>
+          <a
+            onClick={() => { setMenuOpen(false); navigate('/dashboard') }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: 'pointer' }}
+          >Dashboard</a>
+          <a
+            onClick={() => {
+              setMenuOpen(false)
+              document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: 'pointer' }}
+          >Testimonials</a>
+          <a
+            onClick={() => {
+              setMenuOpen(false)
+              document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ cursor: 'pointer' }}
+          >Pricing</a>
         </div>
 
         <div className="nav-actions">
