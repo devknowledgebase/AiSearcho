@@ -28,7 +28,7 @@ export default function FooterDemo() {
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      href: "mailto:contact@resumegpt.com",
+      href: "mailto:kumard.07.dev@gmail.com",
       label: "Email",
     },
   ];

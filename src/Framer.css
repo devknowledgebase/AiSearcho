@@ -890,3 +890,26 @@
         font-size: 32px;
     }
 }
+@media (max-width: 380px) {
+    .page2 {
+        height: 380vh;
+    }
+    .page3 {
+        height: 180vh;
+    }
+    .page4 {
+        height: 165vh;
+    }
+    .page5 {
+        height: 300vh;
+    }
+    .page6 {
+        height: 80vh;
+    }
+    .page7 {
+        height: 80vh;
+    } 
+    .pricing {
+        gap: 50px;
+    }  
+}

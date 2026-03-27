@@ -68,17 +68,6 @@ export const Footer = ({
             <p className="text-base text-zinc-400 text-center md:text-left cursor-default">
               ©{new Date().getFullYear()} {brandName}. All rights reserved.
             </p>
-            {creatorName && creatorUrl && (
-              <nav className="flex gap-4">
-                <a
-                  href={creatorUrl}
-                  target="_blank"
-                  className="text-base text-zinc-400 hover:text-white transition-colors duration-300 hover:font-medium"
-                >
-                  Crafted by {creatorName}
-                </a>
-              </nav>
-            )}
           </div>
         </div>
 
