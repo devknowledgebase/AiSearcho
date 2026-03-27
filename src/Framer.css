@@ -620,11 +620,6 @@
     border-radius: 50%;
 }
 
-.CTA-pattern2 {
-    position: absolute;
-    top: 16%;
-    z-index: 1;
-}
 
 .CTA-under-container {
     display: flex;
@@ -828,10 +823,6 @@
     .page5 {
         min-height: 230vh;
     }
-
-    .CTA-pattern2 {
-     z-index: 9;
-    }
     .CTA-circle {
         width: 226.29px;
         height: 622px;
@@ -877,12 +868,6 @@
         font-size: 26px;
         font-weight: 600;
     }
-    .CTA-pattern2 {
-        height: 100%;
-        width: 100%;
-        top: -20%;
-        z-index: 4;
-    }
     .CTA-form {
         backdrop-filter: blur(46px);
     }
@@ -919,12 +904,6 @@
     .pricing-header h2 {
         font-size: 26px;
         font-weight: 600;
-    }
-    .CTA-pattern2 {
-        height: 100%;
-        width: 100%;
-        top: -20%;
-        z-index: 4;
     }
     .CTA-form {
         backdrop-filter: blur(46px);

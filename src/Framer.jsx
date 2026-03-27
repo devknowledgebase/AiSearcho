@@ -245,7 +245,6 @@ export default function Framer() {
       </form>
       <p className='CTA-p'>No credit card required, 7-days free trial</p>
       </div>
-      <img src={pattern2} alt="pattern2" className='CTA-pattern2'/>
       <div className='CTA-circle'></div>
     </div>
   </div>
