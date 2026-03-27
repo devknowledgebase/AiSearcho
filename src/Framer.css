@@ -873,12 +873,23 @@
         width: 95%;
         height: auto;
         padding-bottom: 40px;
+        position: relative;
+    }
+
+    .CTA-under-container {
+        position: relative;
+        z-index: 2;
     }
 
     .CTA-circle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
         width: 100%;
         max-width: 226px;
         height: 622px;
+        z-index: 0;
     }
 
     .CTA-h2 {
@@ -894,15 +905,16 @@
 
     .CTA-form {
         flex-direction: column;
-        width: 90%;
+        width: 100%;
         max-width: none;
         backdrop-filter: blur(46px);
     }
 
     .CTA-button2 {
         display: block;
-        width: 100%;
-        margin-top: 20px;
+        width: 90%;
+        margin: 20px auto 0 auto;
+        
     }
 
     .CTA-button1 {
