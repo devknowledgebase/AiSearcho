@@ -891,25 +891,45 @@
     }
 }
 @media (min-width: 380px) {
-    .page2 {
-        height: 380vh;
-    }
-    .page3 {
-        height: 180vh;
-    }
-    .page4 {
-        height: 165vh;
-    }
-    .page5 {
-        height: 300vh;
-    }
-    .page6 {
-        height: 80vh;
-    }
-    .page7 {
-        height: 80vh;
-    } 
+
     .pricing {
         gap: 50px;
+    }
+    .bento-header {
+        font-size: 25px;
+    }
+    .page2 {
+        height: 280vh;
+    }
+    .page3 {
+        height: 140vh;
+    }
+    .page4 {
+        height: 120vh;
+    }
+    .page5 {
+        height: 110vh;
+    }
+    .page6 {
+        height: 60vh;
+    }
+    .page7 {
+        height: 70vh;
+    }
+    .pricing-header h2 {
+        font-size: 26px;
+        font-weight: 600;
+    }
+    .CTA-pattern2 {
+        height: 100%;
+        width: 100%;
+        top: -20%;
+        z-index: 4;
+    }
+    .CTA-form {
+        backdrop-filter: blur(46px);
+    }
+    .features h2 {
+        font-size: 32px;
     }  
 }
