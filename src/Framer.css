@@ -1,14 +1,17 @@
 .page {
     width: 100%;
     position: relative;
-    height: 200vh;
+    height: auto;
+    min-height: 200vh;
     background: #030101;
 }
 
 .page2 {
     width: 100%;
     position: relative;
-    height: 120vh;
+    height: auto;
+    min-height: 120vh;
+    padding-bottom: 150px;
     background: #030101;
     z-index: 2;
 }
@@ -16,14 +19,18 @@
 .page3 {
     width: 100%;
     position: relative;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 100px;
     background: #030101;
 }
 
 .page4 {
     width: 100%;
     position: relative;
-    height: 168vh;
+    height: auto;
+    min-height: 168vh;
+    padding-bottom: 100px;
     background: #030101;
 }
 
@@ -42,7 +49,9 @@
 .page6 {
     width: 100%;
     position: relative;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 100px;
     background: #030101;
     display: flex;
     justify-content: center;
@@ -52,7 +61,8 @@
 .page7 {
     width: 100%;
     position: relative;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     background: #030101;
 }
 #m {
