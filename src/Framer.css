@@ -890,7 +890,7 @@
         font-size: 32px;
     }
 }
-@media (max-width: 380px) {
+@media (min-width: 380px) {
     .page2 {
         height: 380vh;
     }
