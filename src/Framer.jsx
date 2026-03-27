@@ -74,14 +74,14 @@ export default function Framer() {
             animate={{ x: ["0%", "-50%"] }}
             transition={{ ease: "linear", duration: 25, repeat: Infinity }}
           >
-            <div style={{ display: "flex", gap: "20px", paddingRight: "20px" }}>
+            <div style={{ display: "flex", gap: "2r0px", paddingRight: "20px" }}>
               {boxs.map((box, index) => (
-                <img src={box} alt="company-logo" key={`1-${index}`} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+                <img src={box} alt="company-logo" key={`1-${index}`} style={{ height: "80px", width: "auto", objectFit: "contain" }} />
               ))}
             </div>
             <div style={{ display: "flex", gap: "20px", paddingRight: "20px" }}>
               {boxs.map((box, index) => (
-                <img src={box} alt="company-logo" key={`2-${index}`} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+                <img src={box} alt="company-logo" key={`2-${index}`} style={{ height: "80px", width: "auto", objectFit: "contain" }} />
               ))}
             </div>
           </motion.div>
