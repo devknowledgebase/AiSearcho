@@ -28,7 +28,7 @@ import Footer from './component/Footer.jsx'
 import { useNavigate } from "react-router-dom"
 import Dashboard from "./Dashboard.jsx"
 import { Show, SignInButton, useClerk, useUser } from "@clerk/react"
-
+import { motion } from "framer-motion"
 const boxs = [box, box1, box2, box3, box4, box5, box6, box7]
 
 export default function Framer() {
@@ -67,10 +67,24 @@ export default function Framer() {
     <div className='page2'>
       <div className='companies'>
         <div className='p1'>Trusted by the world’s most innovative teams</div>
-        <div className='bento-grid-custom'>
-          {boxs.map((box, index) => (
-            <img src={box} alt="box" key={index} />
-          ))}
+        <div className='marquee-container' style={{ overflow: "hidden", width: "100%", position: "relative" }}>
+          <motion.div 
+            className='marquee-content'
+            style={{ display: "flex", width: "max-content" }}
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ ease: "linear", duration: 25, repeat: Infinity }}
+          >
+            <div style={{ display: "flex", gap: "20px", paddingRight: "20px" }}>
+              {boxs.map((box, index) => (
+                <img src={box} alt="company-logo" key={`1-${index}`} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "20px", paddingRight: "20px" }}>
+              {boxs.map((box, index) => (
+                <img src={box} alt="company-logo" key={`2-${index}`} style={{ height: "40px", width: "auto", objectFit: "contain" }} />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
       <div className='bento-header'>
