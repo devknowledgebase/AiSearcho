@@ -27,6 +27,7 @@ import pattern2 from "./pattern 2.svg"
 import Footer from './component/Footer.jsx'
 import { useNavigate } from "react-router-dom"
 import Dashboard from "./Dashboard.jsx"
+import { Show, SignInButton, useClerk, useUser } from "@clerk/react"
 
 const boxs = [box, box1, box2, box3, box4, box5, box6, box7]
 
