@@ -8,7 +8,7 @@
 .page2 {
     width: 100%;
     position: relative;
-    height: 230vh;
+    height: 120vh;
     background: #030101;
     z-index: 2;
 }
@@ -718,10 +718,35 @@
     z-index: 4;
 }
 
+@media (max-width: 1200px) {
+    .img-box {
+        width: 100%;
+        max-width: 900px;
+    }
+    .CTA {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .bento-grid-custom {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .user-friendly {
+        width: 100%;
+        max-width: 744px;
+    }
+    .user-friendly-grad {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     .hero-text h1 {
         font-size: 48px;
-        max-width: 394px;
+        max-width: 100%;
+        padding: 0 5%;
+        box-sizing: border-box;
         line-height: 52px;
         letter-spacing: -5.06%;
     }
@@ -729,7 +754,9 @@
     .hero-text p {
         font-weight: 400;
         font-size: 18px;
-        max-width: 359px;
+        max-width: 100%;
+        padding: 0 5%;
+        box-sizing: border-box;
     }
 
     .hero-text {
@@ -737,24 +764,20 @@
     }
 
     .img-box {
-        width: 361.31px;
-        height: 219px;
+        width: 90%;
+        max-width: 361px;
+        height: auto;
+        aspect-ratio: 361 / 219;
     }
 
-    .blur {
+    .blur, .blur2, .black-fade {
         display: none;
     }
 
-    .blur2 {
-        display: none;
-    }
-
-    .page {
-        height: 116vh;
-    }
-
-    .black-fade {
-        display: none;
+    .page, .page2, .page3, .page4, .page5, .page6, .page7 {
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 50px;
     }
 
     .p1 {
@@ -764,151 +787,138 @@
         line-height: 26px;
         letter-spacing: -0.01%;
         text-align: center;
-        max-width: 342px;
+        max-width: 100%;
+        padding: 0 5%;
+        box-sizing: border-box;
     }
 
     .bento-grid-custom {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, auto);
-        gap: 10px;
-        padding: 0px 10px;
-    }
-
-    .page2 {
-        height: 380vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        padding: 0px 15px;
+        box-sizing: border-box;
     }
 
     .bento-header {
         font-weight: 500;
         font-size: 26px;
         margin-top: 90px;
+        width: 100%;
+        text-align: center;
+        padding: 0 15px;
+        box-sizing: border-box;
     }
 
-    .bento-box {
+    .bento-box, .bento-box2 {
         flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
 
-    .bento-box2 {
-        flex-direction: column;
-    }
-
-    .user-friendly {
-        width: 346px;
+    .seo, .user-friendly {
+        width: 100%;
+        max-width: 346px;
     }
 
     .user-friendly img {
         top: 120px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .page3 {
-        height: 190vh;
+    .pricing {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .pricing h2 {
         font-size: 26px;
+        padding: 0 15px;
     }
 
     .pricing p {
         font-size: 18px;
         line-height: 31px;
         letter-spacing: -0.01%;
-        max-width: 304px;
+        max-width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
     }
 
     .pricing-card-container {
         flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    
+    .pricing-card, .pricing-card2 {
+        width: 90%;
+        max-width: 307px;
     }
 
-    .page5 {
-        min-height: 230vh;
+    .CTA {
+        width: 95%;
+        height: auto;
+        padding-bottom: 40px;
     }
+
     .CTA-circle {
-        width: 226.29px;
+        width: 100%;
+        max-width: 226px;
         height: 622px;
     }
+
     .CTA-h2 {
         font-size: 36px;
         line-height: 43px;
         letter-spacing: -1.5%;
+        width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
+
     .CTA-form {
         flex-direction: column;
+        width: 90%;
+        max-width: none;
+        backdrop-filter: blur(46px);
     }
+
     .CTA-button2 {
         display: block;
+        width: 100%;
+        margin-top: 20px;
     }
+
     .CTA-button1 {
         display: none;
     }
+
+    .features h2 {
+        font-size: 32px;
+    }
 }
+
 @media (max-width: 425px) {
     .bento-header {
         font-size: 25px;
     }
-    .page2 {
-        height: 280vh;
-    }
-    .page3 {
-        height: 140vh;
-    }
-    .page4 {
-        height: 120vh;
-    }
-    .page5 {
-        height: 110vh;
-    }
-    .page6 {
-        height: 60vh;
-    }
-    .page7 {
-        height: 70vh;
-    }
     .pricing-header h2 {
         font-size: 26px;
         font-weight: 600;
     }
-    .CTA-form {
-        backdrop-filter: blur(46px);
+    .hero-text h1 {
+        font-size: 36px;
     }
-    .features h2 {
-        font-size: 32px;
+    .img-box {
+        width: 95%;
     }
-}
-@media (min-width: 380px) {
-
-    .pricing {
-        gap: 50px;
+    .CTA-h2 {
+        font-size: 28px;
     }
-    .bento-header {
-        font-size: 25px;
-    }
-    .page2 {
-        height: 320vh;
-    }
-    .page3 {
-        height: 160vh;
-    }
-    .page4 {
-        height: 140vh;
-    }
-    .page5 {
-        height: 110vh;
-    }
-    .page6 {
-        height: 60vh;
-    }
-    .page7 {
-        height: 70vh;
-    }
-    .pricing-header h2 {
-        font-size: 26px;
-        font-weight: 600;
-    }
-    .CTA-form {
-        backdrop-filter: blur(46px);
-    }
-    .features h2 {
-        font-size: 32px;
-    }  
 }
