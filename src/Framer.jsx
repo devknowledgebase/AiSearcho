@@ -27,12 +27,15 @@ import pattern2 from "./pattern 2.svg"
 import Footer from './component/Footer.jsx'
 import { useNavigate } from "react-router-dom"
 import Dashboard from "./Dashboard.jsx"
+import { useNavigate } from "react-router-dom"
 import { Show, SignInButton, useClerk, useUser } from "@clerk/react"
 
 const boxs = [box, box1, box2, box3, box4, box5, box6, box7]
 
 export default function Framer() {
   const navigate = useNavigate()
+  const { openSignIn } = useClerk()      // ← add this
+  const { user } = useUser()
   return (
     <>
     <div className="page" id="home">
@@ -43,13 +46,12 @@ export default function Framer() {
       <h1>Boost your rankings with AI.</h1>
       <p>Elevate your site’s visibility effortlessly with AI, where smart technology meets user-friendly SEO tools.</p>
       <button onClick={() => {
-              setMenuOpen(false)
-              if (user) {
-                navigate('/dashboard')
-              } else {
-                openSignIn({ forceRedirectUrl: '/dashboard', fallbackRedirectUrl: '/dashboard' })
-              }
-            }}>Start for free</button>
+  if (user) {
+    navigate('/dashboard')
+  } else {
+    openSignIn({ forceRedirectUrl: '/dashboard', fallbackRedirectUrl: '/dashboard' })
+  }
+}}>Start for free</button>
      </div>
     </div> 
      <div className='hero-img'>
