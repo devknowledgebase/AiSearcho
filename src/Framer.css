@@ -784,10 +784,14 @@
         display: none;
     }
 
-    .page, .page2, .page3, .page4, .page5, .page6, .page7 {
+    .page, .page2, .page3, .page4, .page5, .page6 {
         height: auto;
         min-height: 100vh;
         padding-bottom: 50px;
+    }
+    .page7{
+        height: auto;
+        min-height: 80vh;
     }
 
     .p1 {
