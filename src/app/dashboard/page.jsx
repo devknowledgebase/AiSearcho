@@ -7,6 +7,9 @@ import { DataTable } from "../../ui/data-table"
 import { SectionCards } from "../../ui/section-cards"
 import { SiteHeader } from "../../ui/site-header"
 import { AiChatPage } from "../../ui/ai-chat-page"
+import { ProjectsView } from "./projects-view"
+import { AnalyticsView } from "./analytics-view"
+import { TeamView } from "./team-view"
 import {
   SidebarInset,
   SidebarProvider,
@@ -39,8 +42,17 @@ export default function Page() {
               <DataTable data={data} />
             </div>
           </div>
-          <div className={activeView !== "dashboard" ? "flex flex-1 flex-col overflow-hidden" : "hidden"}>
+          <div className={activeView === "chat" ? "flex flex-1 flex-col overflow-hidden" : "hidden"}>
             <AiChatPage />
+          </div>
+          <div className={activeView === "projects" ? "flex flex-1 flex-col overflow-hidden bg-muted/10" : "hidden"}>
+            <ProjectsView />
+          </div>
+          <div className={activeView === "analytics" ? "flex flex-1 flex-col overflow-hidden bg-muted/10" : "hidden"}>
+            <AnalyticsView />
+          </div>
+          <div className={activeView === "team" ? "flex flex-1 flex-col overflow-hidden bg-muted/10" : "hidden"}>
+            <TeamView />
           </div>
         </div>
       </SidebarInset>

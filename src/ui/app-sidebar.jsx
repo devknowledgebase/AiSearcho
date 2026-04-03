@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Link } from "react-router-dom"
 
 import { NavDocuments } from "./nav-documents"
 import { NavMain } from "./nav-main"
@@ -80,10 +81,10 @@ export function AppSidebar({ onNavItemClick, activeView, ...props }) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
+              <Link to="/">
                 <img src={logo} alt="Logo" className="size-5!" />
                 <span className="text-base font-semibold">AISearcho</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
