@@ -19,7 +19,11 @@ export function createClerkSupabaseClient(getToken) {
         }
 
         const headers = new Headers(options?.headers)
-        headers.set('Authorization', `Bearer ${token}`)
+        if (token) {
+          headers.set('Authorization', `Bearer ${token}`)
+        } else {
+          headers.set('Authorization', `Bearer ${supabaseAnonKey}`)
+        }
         headers.set('apikey', supabaseAnonKey)
         return fetch(url, { ...options, headers })
       },

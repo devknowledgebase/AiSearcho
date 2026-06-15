@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createClerkSupabaseClient } from './lib/supabaseClient'
 import Framer from "./Framer.jsx";
 import Dashboard from "./Dashboard.jsx";
 import UserSync from "./component/UserSync.jsx";
